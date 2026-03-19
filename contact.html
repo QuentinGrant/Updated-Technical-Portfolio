@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body data-theme="aurora" data-mode="dark" data-page="contact">
+<body data-theme="aurora" data-page="contact">
 
   <a class="skip" href="#content">Skip to content</a>
 
@@ -40,7 +40,6 @@
 
   <main id="content">
 
-    <!-- HERO -->
     <section class="card pageHero">
       <p class="kicker"><span class="dot"></span>Contact</p>
       <h2 class="pageTitle">Let’s connect</h2>
@@ -49,13 +48,11 @@
       </p>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="card section">
       <h2>Get In Touch</h2>
 
       <div class="twoCol">
 
-        <!-- LEFT SIDE -->
         <div class="item">
           <h3>Contact Details</h3>
           <p class="smallText">
@@ -83,43 +80,35 @@
             Location: Blythewood, South Carolina
           </p>
 
-          <!-- ✅ TRUST LINE -->
           <p class="smallText">
             I typically respond within 24 hours.
           </p>
         </div>
 
-        <!-- RIGHT SIDE (WORKING FORM) -->
         <form
-          class="item"
-          id="contactForm"
-          action="https://formsubmit.co/Grant.quent@gmail.com"
-          method="POST"
-        >
-          <h3>Quick Message</h3>
+  class="item"
+  id="contactForm"
+  action="https://formsubmit.co/Grant.quent@gmail.com"
+  method="POST"
+>
+  <h3>Quick Message</h3>
 
-          <label class="small" for="name">Name</label><br />
-          <input id="name" name="name" type="text" required />
+  <label class="small" for="name">Name</label><br />
+  <input id="name" name="name" type="text" required />
 
-          <label class="small" for="email">Email</label><br />
-          <input id="email" name="email" type="email" required />
+  <label class="small" for="email">Email</label><br />
+  <input id="email" name="email" type="email" required />
 
-          <label class="small" for="msg">Message</label><br />
-          <textarea id="msg" name="message" rows="5" required></textarea>
+  <label class="small" for="msg">Message</label><br />
+  <textarea id="msg" name="message" rows="5" required></textarea>
 
-          <!-- Hidden settings -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="New Portfolio Message">
-          <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_subject" value="New Portfolio Message" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_autoresponse" value="Thanks for reaching out. I received your message and will get back to you soon." />
 
-          <!-- ✅ SUCCESS REDIRECT -->
-          <input type="hidden" name="_next" value="contact.html?success=true">
-
-          <button class="btn primary" type="submit">Send</button>
-
-          <!-- ✅ SUCCESS MESSAGE -->
-          <p id="formSuccess" class="small topGap" style="display:none;"></p>
-        </form>
+  <button class="btn primary" type="submit">Send</button>
+      </form>
 
       </div>
     </section>
@@ -131,17 +120,6 @@
   </main>
 
   <script src="script.js"></script>
-
-  <!-- ✅ SUCCESS MESSAGE SCRIPT -->
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const successMsg = document.getElementById("formSuccess");
-
-    if (params.get("success") === "true" && successMsg) {
-      successMsg.style.display = "block";
-      successMsg.textContent = "✅ Thanks! Your message has been sent. I’ll be in touch soon.";
-    }
-  </script>
 
 </body>
 </html>
