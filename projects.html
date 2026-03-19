@@ -6,22 +6,278 @@
   <meta name="description" content="Projects by Quentin Grant" />
   <title>Quentin Grant | Projects</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .projects-shell{
+      display:grid;
+      gap:18px;
+    }
+
+    .projects-hero{
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+    }
+
+    .projects-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(500px 240px at 10% 10%, rgba(34,197,94,.10), transparent 60%),
+        radial-gradient(520px 260px at 85% 20%, rgba(59,130,246,.12), transparent 60%),
+        radial-gradient(460px 240px at 60% 100%, rgba(167,139,250,.10), transparent 60%);
+      pointer-events:none;
+    }
+
+    .projects-hero-inner{
+      position:relative;
+      z-index:1;
+    }
+
+    .projects-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .projects-kicker::after{
+      content:"";
+      width:56px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--a1), var(--a2), var(--a3));
+      opacity:.9;
+    }
+
+    .projects-lead{
+      margin:0;
+      max-width:68ch;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .projects-mini-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .projects-mini-chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--text);
+    }
+
+    .project-group{
+      padding:22px;
+    }
+
+    .project-group-title{
+      margin:0 0 14px;
+      font-size:14px;
+      font-family:var(--mono);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .project-group-title::after{
+      content:"";
+      height:2px;
+      width:48px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--a2), var(--a3));
+      opacity:.9;
+    }
+
+    .project-stack{
+      display:grid;
+      gap:16px;
+    }
+
+    .project-card{
+      padding:18px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(0,0,0,.22);
+      border-color:rgba(255,255,255,.2);
+    }
+
+    .project-top{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .project-copy{
+      min-width:0;
+    }
+
+    .project-copy h3{
+      margin:0 0 8px;
+      font-size:28px;
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+
+    .project-subtitle{
+      margin:0 0 8px;
+      font-size:16px;
+      color:var(--text);
+      opacity:.92;
+    }
+
+    .project-meta{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:12px;
+      line-height:1.6;
+    }
+
+    .project-desc{
+      margin:0 0 14px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .project-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 14px;
+    }
+
+    .project-pills span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      font-family:var(--mono);
+      font-size:12px;
+      white-space:nowrap;
+      color:var(--text);
+    }
+
+    .project-pills span:nth-child(4n+1){
+      border-color:color-mix(in oklab, var(--a1) 60%, var(--line));
+      background:color-mix(in oklab, var(--a1) 16%, transparent);
+    }
+    .project-pills span:nth-child(4n+2){
+      border-color:color-mix(in oklab, var(--a2) 60%, var(--line));
+      background:color-mix(in oklab, var(--a2) 16%, transparent);
+    }
+    .project-pills span:nth-child(4n+3){
+      border-color:color-mix(in oklab, var(--a3) 60%, var(--line));
+      background:color-mix(in oklab, var(--a3) 16%, transparent);
+    }
+    .project-pills span:nth-child(4n+4){
+      border-color:color-mix(in oklab, var(--a4) 60%, var(--line));
+      background:color-mix(in oklab, var(--a4) 16%, transparent);
+    }
+
+    .project-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--text);
+    }
+
+    .project-list li{
+      margin:8px 0;
+      line-height:1.65;
+    }
+
+    .project-visual{
+      min-width:0;
+    }
+
+    .project-img{
+      width:100%;
+      height:100%;
+      min-height:280px;
+      max-height:360px;
+      object-fit:cover;
+      border-radius:16px;
+      border:1px solid var(--line);
+      display:block;
+      background:rgba(255,255,255,.03);
+    }
+
+    .project-footer-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .project-note{
+      margin-top:8px;
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .btn.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+
+    @media (max-width: 980px){
+      .project-top{
+        grid-template-columns:1fr;
+      }
+
+      .project-copy h3{
+        font-size:24px;
+      }
+
+      .project-img{
+        min-height:220px;
+      }
+    }
+  </style>
 </head>
 
-<body data-theme="aurora" data-mode="dark" data-page="projects">
+<body data-theme="aurora" data-page="projects">
   <a class="skip" href="#content">Skip to content</a>
 
   <header>
     <div class="topbar">
       <div class="brand">
-        <div class="logo">QG</div>
+        <div class="logo" aria-hidden="true">QG</div>
         <div>
           <h1>Quentin Grant</h1>
           <p>AWS • IT Operations • Security</p>
         </div>
       </div>
 
-      <nav>
+      <nav aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html" class="active">Projects</a>
@@ -29,6 +285,13 @@
         <a href="education.html">Education</a>
         <a href="contact.html">Contact</a>
       </nav>
+
+      <div class="actions">
+        <button class="btn" id="themeBtn" type="button">Theme: Aurora</button>
+        <button class="btn" id="modeBtn" type="button">Mode: Dark</button>
+        <a class="btn" href="mailto:Grant.quent@gmail.com">Email</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/quentingrant/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
     </div>
   </header>
 
@@ -39,156 +302,237 @@
         <div class="projects-kicker">Projects</div>
         <p class="projects-lead">
           These projects highlight hands-on work across AWS hosting, network design, fleet operations,
-          and security documentation.
+          and security documentation. Each project reflects foundational cloud engineering, cloud support,
+          and operational discipline.
         </p>
+
+        <div class="projects-mini-row">
+          <span class="projects-mini-chip">AWS</span>
+          <span class="projects-mini-chip">Infrastructure</span>
+          <span class="projects-mini-chip">Operations</span>
+          <span class="projects-mini-chip">Security</span>
+        </div>
       </div>
     </section>
 
-    <!-- S3 PROJECT -->
     <section class="card project-group">
       <h2 class="project-group-title">Cloud Hosting & Delivery</h2>
 
       <div class="project-stack">
         <article class="project-card">
           <div class="project-top">
-
             <div class="project-copy">
               <h3>AWS S3 Static Website</h3>
+              <div class="project-subtitle">
+                Deployed a secure, scalable static website using AWS S3 with CDN-ready architecture.
+              </div>
+
+              <div class="project-meta">
+                S3 • CloudFront • IAM • Route 53
+              </div>
+
+              <div class="project-pills">
+                <span>AWS</span>
+                <span>CloudFront</span>
+                <span>IAM</span>
+                <span>Web Hosting</span>
+              </div>
+
               <p class="project-desc">
-                Built an S3-hosted website to simulate real-world cloud hosting with secure configurations and scalability.
+                Built an S3-hosted website to simulate real-world cloud hosting,
+                implementing IAM policies and versioning to improve security and reliability.
               </p>
 
               <ul class="project-list">
-                <li>Configured static hosting with secure permissions</li>
-                <li>Applied IAM least-privilege access</li>
-                <li>Prepared CDN integration with CloudFront</li>
+                <li>Configured S3 bucket for static hosting with secure public access settings</li>
+                <li>Implemented IAM-based permissions aligned with least-privilege principles</li>
+                <li>Prepared CDN integration using CloudFront concepts for performance and scalability</li>
+                <li>Applied versioning and access policies to improve reliability and data protection</li>
               </ul>
 
               <div class="project-footer-row">
                 <span class="btn primary disabled">Demo Coming Soon</span>
                 <span class="btn disabled">GitHub Coming Soon</span>
               </div>
+
+              <div class="project-note">
+                Built to demonstrate secure cloud hosting and scalable content delivery practices.
+              </div>
             </div>
 
             <div class="project-visual">
-              <img src="Images/s3.png" class="project-img">
+              <img src="Images/s3.png" alt="AWS S3 static website architecture diagram" class="project-img">
             </div>
-
           </div>
         </article>
       </div>
     </section>
 
-    <!-- VPC PROJECT -->
     <section class="card project-group">
       <h2 class="project-group-title">Networking & Infrastructure</h2>
 
       <div class="project-stack">
         <article class="project-card">
           <div class="project-top">
-
             <div class="project-copy">
               <h3>VPC + EC2 Network Architecture</h3>
-              <p class="project-desc">
+              <div class="project-subtitle">
                 Designed a segmented AWS network with secure instance deployment and controlled traffic flow.
+              </div>
+
+              <div class="project-meta">
+                VPC • Subnets • Security Groups • NACLs • EC2
+              </div>
+
+              <div class="project-pills">
+                <span>VPC</span>
+                <span>EC2</span>
+                <span>Security Groups</span>
+                <span>NACLs</span>
+              </div>
+
+              <p class="project-desc">
+                Architected a multi-tier AWS VPC environment with public and private subnets,
+                enabling secure and controlled access to EC2 instances while maintaining network isolation.
               </p>
 
               <ul class="project-list">
-                <li>Built public/private subnet architecture</li>
-                <li>Configured routing and gateways</li>
-                <li>Applied security groups and NACLs</li>
+                <li>Designed VPC with segmented public and private subnets for workload separation</li>
+                <li>Configured routing tables and Internet Gateway for controlled external access</li>
+                <li>Applied least-privilege security group rules for inbound and outbound traffic</li>
+                <li>Implemented network ACLs to enforce additional traffic filtering at the subnet level</li>
               </ul>
 
               <div class="project-footer-row">
                 <span class="btn primary disabled">Project Coming Soon</span>
                 <span class="btn disabled">GitHub Coming Soon</span>
               </div>
+
+              <div class="project-note">
+                Demonstrates foundational cloud networking, segmentation, and security design.
+              </div>
             </div>
 
             <div class="project-visual">
-              <img src="Images/vpc.png" class="project-img">
+              <img src="Images/vpc.png" alt="AWS VPC and EC2 network lab diagram" class="project-img">
             </div>
-
           </div>
         </article>
       </div>
     </section>
 
-    <!-- SSM PROJECT -->
     <section class="card project-group">
       <h2 class="project-group-title">Operations & Automation</h2>
 
       <div class="project-stack">
         <article class="project-card">
           <div class="project-top">
-
             <div class="project-copy">
               <h3>AWS Systems Manager</h3>
+              <div class="project-subtitle">
+                Improved visibility, patching, and operational control across EC2 instances.
+              </div>
+
+              <div class="project-meta">
+                SSM • Patch Manager • Run Command • Inventory
+              </div>
+
+              <div class="project-pills">
+                <span>SSM</span>
+                <span>Automation</span>
+                <span>Patching</span>
+                <span>Operations</span>
+              </div>
+
               <p class="project-desc">
-                Implemented centralized management, patching, and automation across EC2 instances.
+                Implemented AWS Systems Manager to centralize instance management, automate patching workflows,
+                and improve operational visibility across cloud resources.
               </p>
 
               <ul class="project-list">
-                <li>Configured SSM Agent and IAM roles</li>
-                <li>Automated patching workflows</li>
-                <li>Improved system visibility</li>
+                <li>Configured SSM Agent and IAM roles for secure instance management</li>
+                <li>Used Run Command to execute remote administrative actions across instances</li>
+                <li>Implemented patch baselines and maintenance windows for automated updates</li>
+                <li>Leveraged inventory tracking to improve system visibility and compliance awareness</li>
               </ul>
 
               <div class="project-footer-row">
                 <span class="btn primary disabled">Project Coming Soon</span>
                 <span class="btn disabled">GitHub Coming Soon</span>
               </div>
+
+              <div class="project-note">
+                Focused on operational efficiency, automation, and cloud systems management.
+              </div>
             </div>
 
             <div class="project-visual">
-              <img src="Images/ssm.png" class="project-img">
+              <img src="Images/ssm.png" alt="AWS Systems Manager architecture diagram" class="project-img">
             </div>
-
           </div>
         </article>
       </div>
     </section>
 
-    <!-- SIEM PROJECT -->
     <section class="card project-group">
       <h2 class="project-group-title">Security & Incident Response</h2>
 
       <div class="project-stack">
         <article class="project-card">
           <div class="project-top">
-
             <div class="project-copy">
-              <h3>SIEM Monitoring & Incident Analysis</h3>
+              <h3>SIEM Monitoring & Incident Analysis Lab</h3>
+              <div class="project-subtitle">
+                Built a foundational SIEM workflow to collect logs, investigate events, and improve security visibility.
+              </div>
+
+              <div class="project-meta">
+                SIEM • Log Analysis • Security Monitoring • Incident Investigation
+              </div>
+
+              <div class="project-pills">
+                <span>SIEM</span>
+                <span>Security Monitoring</span>
+                <span>Log Analysis</span>
+                <span>Incident Response</span>
+              </div>
+
               <p class="project-desc">
-                Built a SIEM lab to collect logs, investigate alerts, and improve security visibility.
+                Built a hands-on SIEM lab to practice centralized log collection, event analysis, and security investigation workflows.
+                The project focused on improving visibility into system activity and identifying suspicious behavior through log review
+                and alert-driven analysis.
               </p>
 
               <ul class="project-list">
-                <li>Analyzed system and security logs</li>
-                <li>Investigated alerts and anomalies</li>
-                <li>Documented incident response steps</li>
+                <li>Collected and reviewed system and security logs to build familiarity with normal and suspicious activity patterns</li>
+                <li>Investigated alerts and event data to identify potential indicators of unauthorized access or misconfiguration</li>
+                <li>Practiced filtering, searching, and correlating log data to support faster incident review</li>
+                <li>Documented findings, observations, and response steps to strengthen repeatable security operations workflows</li>
               </ul>
 
               <div class="project-footer-row">
                 <span class="btn primary disabled">Project Coming Soon</span>
                 <span class="btn disabled">GitHub Coming Soon</span>
               </div>
+
+              <div class="project-note">
+                Demonstrates foundational security monitoring, log analysis, and incident investigation skills in a controlled lab environment.
+              </div>
             </div>
 
             <div class="project-visual">
-              <img src="Images/siem.png" class="project-img">
+              <img src="Images/siem.png" alt="SIEM monitoring and incident analysis lab diagram" class="project-img">
             </div>
-
           </div>
         </article>
       </div>
     </section>
 
     <div class="footer">
-      © Quentin Grant
+      <div>© <span id="year"></span> Quentin Grant</div>
     </div>
-
   </main>
 
+  <script src="script.js"></script>
 </body>
 </html>
