@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="About Quentin Grant — Cloud Support Engineer" />
+  <meta property="og:title" content="Quentin Grant | About" />
+  <meta property="og:description" content="Cloud Support Engineer • AWS • IT Operations • Security" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="profile.jpg.jpg" />
+  <title>Quentin Grant | About</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .about-shell{
+      display:grid;
+      gap:18px;
+    }
+
+    .about-hero{
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+    }
+
+    .about-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(520px 240px at 8% 12%, rgba(34,197,94,.12), transparent 60%),
+        radial-gradient(540px 260px at 82% 18%, rgba(59,130,246,.14), transparent 62%),
+        radial-gradient(500px 240px at 60% 100%, rgba(167,139,250,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .about-hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .about-main,
+    .about-side{
+      min-width:0;
+    }
+
+    .about-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .about-kicker::after{
+      content:"";
+      width:56px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--a1), var(--a2), var(--a3));
+      opacity:.9;
+    }
+
+    .about-title{
+      margin:0 0 12px;
+      font-size:clamp(30px, 4vw, 46px);
+      line-height:1.05;
+      letter-spacing:-.03em;
+      max-width:12ch;
+    }
+
+    .about-lead{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:64ch;
+    }
+
+    .about-action-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .about-mini-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .about-mini-chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--text);
+    }
+
+    .about-side{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .about-panel{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      padding:18px;
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .about-panel:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(0,0,0,.22);
+      border-color:rgba(255,255,255,.2);
+    }
+
+    .about-panel::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      right:0;
+      height:3px;
+      background:linear-gradient(90deg, var(--a1), var(--a2), var(--a3), var(--a4));
+      opacity:.9;
+    }
+
+    .about-panel h3{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+
+    .about-focus-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .about-focus-tags span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      font-family:var(--mono);
+      font-size:12px;
+      white-space:nowrap;
+      border:1px solid var(--line);
+      color:var(--text);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .about-focus-tags span:nth-child(1){
+      border-color: color-mix(in oklab, var(--a1) 60%, var(--line));
+      background: color-mix(in oklab, var(--a1) 18%, transparent);
+    }
+
+    .about-focus-tags span:nth-child(2){
+      border-color: color-mix(in oklab, var(--a2) 60%, var(--line));
+      background: color-mix(in oklab, var(--a2) 18%, transparent);
+    }
+
+    .about-focus-tags span:nth-child(3){
+      border-color: color-mix(in oklab, var(--a3) 60%, var(--line));
+      background: color-mix(in oklab, var(--a3) 18%, transparent);
+    }
+
+    .about-focus-tags span:nth-child(4){
+      border-color: color-mix(in oklab, var(--a4) 60%, var(--line));
+      background: color-mix(in oklab, var(--a4) 18%, transparent);
+    }
+
+    .about-focus-tags span:nth-child(5){
+      border-color: color-mix(in oklab, var(--a2) 60%, var(--line));
+      background: color-mix(in oklab, var(--a2) 18%, transparent);
+    }
+
+    .about-focus-tags span:nth-child(6){
+      border-color: color-mix(in oklab, var(--a3) 60%, var(--line));
+      background: color-mix(in oklab, var(--a3) 18%, transparent);
+    }
+
+    .about-focus-tags span:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(0,0,0,.25);
+    }
+
+    .about-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .about-list li{
+      margin:8px 0;
+      line-height:1.6;
+    }
+
+    .about-story{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .story-card{
+      position:relative;
+      padding:20px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .story-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(0,0,0,.2);
+    }
+
+    .story-card .story-line{
+      width:70px;
+      height:3px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--a1), var(--a2), var(--a3));
+      margin-bottom:14px;
+    }
+
+    .story-card h3{
+      margin:0 0 10px;
+      font-size:20px;
+    }
+
+    .story-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .about-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .about-stat{
+      position:relative;
+      padding:20px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      overflow:hidden;
+    }
+
+    .about-stat::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:3px;
+      background:linear-gradient(90deg, var(--a1), var(--a2), var(--a3), var(--a4));
+      opacity:.95;
+    }
+
+    .about-stat-number{
+      font-size:40px;
+      font-weight:800;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .about-stat-label{
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .about-strength-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+    }
+
+    .about-strength{
+      position:relative;
+      padding:20px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .about-strength:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(0,0,0,.2);
+    }
+
+    .about-strength::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      right:0;
+      height:3px;
+    }
+
+    .about-strength:nth-child(1)::before{ background:linear-gradient(90deg, var(--a1), transparent); }
+    .about-strength:nth-child(2)::before{ background:linear-gradient(90deg, var(--a2), transparent); }
+    .about-strength:nth-child(3)::before{ background:linear-gradient(90deg, var(--a3), transparent); }
+    .about-strength:nth-child(4)::before{ background:linear-gradient(90deg, var(--a4), transparent); }
+
+    .about-strength h3{
+      margin:0 0 10px;
+      font-size:19px;
+    }
+
+    .about-strength p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .about-cta-box{
+      padding:22px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(90deg, rgba(34,197,94,.07), rgba(59,130,246,.07), rgba(167,139,250,.07));
+    }
+
+    .about-cta-box p{
+      margin:0;
+      font-size:17px;
+      line-height:1.8;
+      color:var(--text);
+    }
+
+    @media (max-width: 980px){
+      .about-hero-grid,
+      .about-story,
+      .about-stats,
+      .about-strength-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about-title{
+        max-width:none;
+      }
+    }
+  </style>
+</head>
+
+<body data-theme="aurora" data-mode="dark" data-page="about">
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">QG</div>
+        <div>
+          <h1>Quentin Grant</h1>
+          <p>AWS • IT Operations • Security</p>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="education.html">Education</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="themeBtn" type="button">Theme: Aurora</button>
+        <button class="btn" id="modeBtn" type="button">Mode: Dark</button>
+        <a class="btn" href="mailto:Grant.quent@gmail.com">Email</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/quentingrant/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="about-shell">
+
+    <section class="card about-hero">
+      <div class="about-hero-grid">
+        <div class="about-main">
+          <div class="about-kicker">About Me</div>
+          <p class="about-lead">
+            I got into cloud because I enjoy breaking complex systems and rebuilding them into something reliable.
+            My background combines hands-on technical experience, academic training, and active cloud upskilling.
+            What draws me to cloud support is the chance to troubleshoot deeply, improve systems, and make infrastructure more dependable.
+          </p>
+
+          <div class="about-action-row">
+            <a class="btn primary" href="projects.html">View Projects</a>
+            <a class="btn" href="experience.html">View Experience</a>
+            <a class="btn" href="contact.html">Contact Me</a>
+          </div>
+
+          <div class="about-mini-row">
+
+          </div>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-panel">
+            <h3>Professional Focus</h3>
+            
+            <div class="about-focus-tags">
+              <span>AWS</span>
+              <span>Cloud Support</span>
+              <span>Networking</span>
+              <span>Linux</span>
+              <span>Security</span>
+              <span>Documentation</span>
+            </div>
+          </div>
+
+          <div class="about-panel">
+            <h3>What I Bring</h3>
+            <ul class="about-list">
+              <li>Hands-on experience deploying and troubleshooting scalable environments using EC2 for compute, 
+                S3 for resilient storage, and IAM for least-privilege security.</li>
+              <li>Deep expertise in Linux server administration, 
+                ensuring stable back-end performance and seamless disaster recovery strategies.</li>
+              <li>Security-minded approach to systems and infrastructure</li>
+              <li>Clear communication and documentation habits</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Professional Summary</h2>
+      <div class="about-story">
+        <article class="story-card">
+          <div class="story-line"></div>
+          <h3>Background</h3>
+          <p>
+            Skilled in VPC design, cloud security, networking, IT support, Linux fundamentals, EC2 operations,
+            documentation, and monitoring.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="story-line"></div>
+          <h3>Current Growth</h3>
+          <p>
+            Currently scaling my expertise toward becoming an AWS Solutions Architect, 
+            I thrive at the intersection of technical strategy and implementation 
+            while translating high-level business goals into secure, cost-effective, and scalable technical blueprints.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="story-line"></div>
+          <h3>Career Direction</h3>
+          <p>
+            I am seeking a Cloud Support or Junior Cloud Engineer role where I can contribute to troubleshooting,
+            infrastructure support, process improvement, and automation while continuing to grow in AWS. 
+            I'm ready to contribute to cloud support teams by improving system reliability, 
+            strengthening security, and delivering consistent cloud support in production environments.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>At a Glance</h2>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-number">AWS</div>
+          <div class="about-stat-label">Core services and cloud concepts</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">Linux</div>
+          <div class="about-stat-label">Shell usage, permissions, users, and processes</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">Ops</div>
+          <div class="about-stat-label">Security-first mindset, monitoring, and documentation</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Core Skills</h2>
+      <div class="about-strength-grid">
+        <article class="about-strength">
+          <h3>Cloud & Infrastructure</h3>
+          <p>
+            AWS core services and cloud concepts, S3 website hosting, EC2 basics, VPCs, subnets,
+            security groups, NACLs, and introductory scaling and load balancing concepts.
+          </p>
+        </article>
+
+        <article class="about-strength">
+          <h3>Systems & Security</h3>
+          <p>
+            Windows and Linux support, shell usage, permissions, users and processes,
+            incident review and documentation, plus basic vulnerability testing and troubleshooting.
+          </p>
+        </article>
+
+        <article class="about-strength">
+          <h3>Tools</h3>
+          <p>
+            AWS CLI, Microsoft Office, Google Workspace, VS Code, Git, GitHub,
+            PowerShell, PuTTY, Ubuntu, and knowledge-base or technical documentation workflows.
+          </p>
+        </article>
+
+        <article class="about-strength">
+          <h3>Strengths</h3>
+          <p>
+            Troubleshooting and root-cause thinking, fast learning, adaptability,
+            cross-functional collaboration, and operational discipline with consistency.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>What I'm Looking For</h2>
+      <div class="about-cta-box">
+        <p>
+          I am looking for a role where I can contribute immediately through cloud support,
+          infrastructure troubleshooting, and cloud operations while continuing to grow into deeper AWS,
+          automation, and engineering responsibilities.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Quentin Grant</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

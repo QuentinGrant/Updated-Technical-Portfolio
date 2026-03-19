@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Quentin Grant" />
+  <title>Quentin Grant | Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="aurora" data-mode="dark" data-page="contact">
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">QG</div>
+        <div>
+          <h1>Quentin Grant</h1>
+          <p>AWS • IT Operations • Security</p>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="education.html">Education</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="themeBtn" type="button">Theme: Aurora</button>
+        <button class="btn" id="modeBtn" type="button">Mode: Dark</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <!-- HERO -->
+    <section class="card pageHero">
+      <p class="kicker"><span class="dot"></span>Contact</p>
+      <h2 class="pageTitle">Let’s connect</h2>
+      <p class="sub">
+        Reach out by email or LinkedIn for cloud support, junior cloud engineering, or IT operations opportunities.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card section">
+      <h2>Get In Touch</h2>
+
+      <div class="twoCol">
+
+        <!-- LEFT SIDE -->
+        <div class="item">
+          <h3>Contact Details</h3>
+          <p class="smallText">
+            Best way to reach me is by email. I’m also active on LinkedIn.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="mailto:Grant.quent@gmail.com">
+              Grant.quent@gmail.com
+            </a>
+
+            <a class="btn"
+              href="https://www.linkedin.com/in/quentingrant/"
+              target="_blank"
+              rel="noreferrer">
+              LinkedIn
+            </a>
+
+            <button class="btn" id="copyEmail" type="button">
+              Copy Email
+            </button>
+          </div>
+
+          <p class="smallText topGap">
+            Location: Blythewood, South Carolina
+          </p>
+
+          <!-- ✅ TRUST LINE -->
+          <p class="smallText">
+            I typically respond within 24 hours.
+          </p>
+        </div>
+
+        <!-- RIGHT SIDE (WORKING FORM) -->
+        <form
+          class="item"
+          id="contactForm"
+          action="https://formsubmit.co/Grant.quent@gmail.com"
+          method="POST"
+        >
+          <h3>Quick Message</h3>
+
+          <label class="small" for="name">Name</label><br />
+          <input id="name" name="name" type="text" required />
+
+          <label class="small" for="email">Email</label><br />
+          <input id="email" name="email" type="email" required />
+
+          <label class="small" for="msg">Message</label><br />
+          <textarea id="msg" name="message" rows="5" required></textarea>
+
+          <!-- Hidden settings -->
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New Portfolio Message">
+          <input type="hidden" name="_template" value="table">
+
+          <!-- ✅ SUCCESS REDIRECT -->
+          <input type="hidden" name="_next" value="contact.html?success=true">
+
+          <button class="btn primary" type="submit">Send</button>
+
+          <!-- ✅ SUCCESS MESSAGE -->
+          <p id="formSuccess" class="small topGap" style="display:none;"></p>
+        </form>
+
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Quentin Grant</div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- ✅ SUCCESS MESSAGE SCRIPT -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const successMsg = document.getElementById("formSuccess");
+
+    if (params.get("success") === "true" && successMsg) {
+      successMsg.style.display = "block";
+      successMsg.textContent = "✅ Thanks! Your message has been sent. I’ll be in touch soon.";
+    }
+  </script>
+
+</body>
+</html>
