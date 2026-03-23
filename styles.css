@@ -987,3 +987,16 @@ body[data-mode="light"]{
 .twoCol .item ul {
   flex-grow: 1;
 }
+
+
+/* Default / Light mode */
+h2.portfolio-headline {
+  color: var(--text); /* uses text color from body variables */
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  h2.portfolio-headline {
+    color: #FFFFFF !important; /* force white in dark mode */
+  }
+}
